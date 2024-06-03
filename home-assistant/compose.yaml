@@ -1,0 +1,25 @@
+version: '3'
+services:
+  homeassistant:
+    container_name: home-assistant
+    image: "ghcr.io/home-assistant/home-assistant:stable"
+    volumes:
+      - home-assistant-data:/config
+      - /etc/localtime:/etc/localtime:ro
+      - /run/dbus:/run/dbus:ro
+    restart: unless-stopped
+    privileged: true
+    network_mode: host
+  influxdb:
+    image: influxdb
+    container_name: home-assistant-influx
+    volumes:
+      - home-assistant-influxdb:/var/lib/influxdb2
+    ports:
+      - 30002:8086
+    restart: unless-stopped
+volumes:
+  home-assistant-data:
+    external: true
+  home-assistant-influxdb:
+    external: true

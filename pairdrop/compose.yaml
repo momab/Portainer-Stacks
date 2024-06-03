@@ -1,5 +1,5 @@
 services:
-  pairdrop:
+  app:
     image: lscr.io/linuxserver/pairdrop:latest
     environment:
       - PUID=1000

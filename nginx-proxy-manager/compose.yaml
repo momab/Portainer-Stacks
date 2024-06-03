@@ -10,3 +10,8 @@ services:
     volumes:
       - nginx-proxy-manager-data:/data
       - nginx-proxy-manager-letsencrypt:/etc/letsencrypt
+volumes:
+  nginx-proxy-manager-data:
+    external: true
+  nginx-proxy-manager-letsencrypt:
+    external: true
